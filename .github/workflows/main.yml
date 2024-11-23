@@ -1,0 +1,29 @@
+name: Store and Retrieve Multimedia Files
+on:
+push:
+branches:
+- main
+jobs:
+store-and-retrieve:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout code
+uses: actions/checkout@v2
+- name: Create directory for multimedia files
+run: mkdir multimedia-files
+- name: Store multimedia file
+run: |
+curl -X POST \
+(link unavailable) \
+-H &#39;Authorization: Bearer ${GITHUB_TOKEN}&#39; \
+-H &#39;Content-Type: application/json&#39; \
+-d &#39;{&quot;message&quot;: &quot;Upload multimedia file&quot;, &quot;content&quot;:
+&quot;${BASE64_ENCODED_FILE_CONTENTS}&quot;}&#39;
+- name: Retrieve multimedia file
+run: |
+curl -X GET \
+(link unavailable) \
+-H &#39;Authorization: Bearer ${GITHUB_TOKEN}&#39; \
+-H &#39;Content-Type: application/json&#39;
+- name: Return multimedia file contents
+run: echo &quot;${RESPONSE_CONTENTS}&quot;
